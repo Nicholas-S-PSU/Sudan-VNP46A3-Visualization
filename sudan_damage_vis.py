@@ -12,7 +12,7 @@ To change the data used, put your .h5 files into a folder lead to by PATH_DEFAUL
 To view other, differently formatted satellite data with sufficiently similar interpretations, 
 change the file navigation in load_available_dates and load_data_from_date to match the format of your data
 
-This project is packaged with (stripped down) data from 1 year of the VNP46A3 dataset, the monthly Black Marble dataset from NASA
+This project is packaged with (stripped down) data from 2 months across 2 years of the VNP46A3 dataset, the monthly Black Marble dataset from NASA
 To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview
 
 The code finds its data in a folder lead to by PATH_DEFAULT. At the moment, the app assumes the data starts in data.zip in the same directory
