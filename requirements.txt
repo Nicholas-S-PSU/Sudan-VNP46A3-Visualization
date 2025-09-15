@@ -1,0 +1,6 @@
+streamlit
+h5py
+matplotlib
+cartopy
+numpy
+glob
