@@ -13,7 +13,7 @@ Any data in the folder lead to by PATH_DEFAULT will be parsed and plotted by the
 
 To view other, differently formatted satellite data with sufficiently similar interpretations, change the file navigation in load_available_dates and load_data_from_date to match the format of your data. The remainder of the functionality should work fine
 
-This project is packaged with (stripped down) data from March 2023 and 2024 of the VNP46A3 dataset, the monthly Black Marble dataset from NASA. To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview. GitHub doesn't allow large uploads, hence why I only included 2 months worth. The project should also work with the daily and yearly Black Marble uploads
+This project is packaged with (stripped down) data from March 2023 to 2024 of the VNP46A3 dataset, the monthly Black Marble dataset from NASA. To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview. The project should also work with the daily and yearly Black Marble uploads.
 
 How to run:
   
