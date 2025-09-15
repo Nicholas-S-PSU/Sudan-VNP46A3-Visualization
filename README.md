@@ -15,7 +15,7 @@ Any .h5 data in the folder lead to by PATH_DEFAULT will be parsed and plotted by
 
 To view other, differently formatted satellite data with sufficiently similar interpretations, change the file navigation in load_available_dates and load_data_from_date to match the format of your data. The remainder of the functionality should work fine
 
-This project is packaged with (stripped down) data from March 2023 to 2024 of the VNP46A3 dataset, the monthly Black Marble dataset from NASA. To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview. The project should also work with the daily and yearly Black Marble uploads.
+This project is packaged with (stripped down) data from February and March in 2023 and 2024 of the VNP46A3 dataset, the monthly Black Marble dataset from NASA. To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview. The project should also work with the daily and yearly Black Marble uploads.
 
 The code finds its data in a folder lead to by PATH_DEFAULT. At the moment, the app assumes the data starts in data.zip in the same directory as this app, extracts it, creates a folder /data, which PATH_DEFAULT is then set to. That way, it will work when deployed to streamlit or if you just download all of the files in this repository and run them. If you are running locally, feel free to just leave your files extracted in a folder of your choice and set PATH_DEFAULT manually,
 commenting out and in the relevant lines at the top of the script
