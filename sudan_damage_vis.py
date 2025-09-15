@@ -365,7 +365,7 @@ if mode == "Single":
 elif mode == "Difference":
     if st.button("Render difference plot"):
         data_list = get_difference_data(sel_date_obj, sel_date_obj_b, coords, chunk_size=downsample_val, normalize=normalize)
-        plot_difference(plot_container, data_list, coords = coords, linThreshCoefficient=downsample_val if not normalize else 10**9, normalized=normalize)
+        plot_difference(plot_container, data_list, coords = coords, normalized=normalize)
 else:  # Relative Comparison
     if st.button("Render relative plot"):
         data_list = get_difference_data(sel_date_obj, sel_date_obj_b, coords, chunk_size=downsample_val, normalize=normalize, relative=True)
