@@ -39,6 +39,7 @@ import numpy as np
 import glob
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import os
+import zipfile
 
 # Config
 APP_TITLE = "Sudan War Damage Visualizer"
