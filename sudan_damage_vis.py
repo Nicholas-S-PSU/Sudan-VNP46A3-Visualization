@@ -15,8 +15,13 @@ change the file navigation in load_available_dates and load_data_from_date to ma
 This project is packaged with (stripped down) data from 1 year of the VNP46A3 dataset, the monthly Black Marble dataset from NASA
 To download more, see https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/#overview
 
+The code finds its data in a folder lead to by PATH_DEFAULT. At the moment, the app assumes the data starts in data.zip in the same directory
+as this app, extracts it, and creates such a folder. That way, it will work when deployed to streamlit or if you just download all of the files
+in this repository. If you are running locally, feel free to just leave your files extracted in a folder of your choice and set PATH_DEFAULT manually,
+commenting out and in the relevant lines at the top of the file
+
 How to run:
-  0. Set PATH_DEFAULT to the folder containing your datasets
+  0. Either leave your data compressed as data.zip in the same directory as this script, or set PATH_DEFAULT to a folder containing your data manually
   1. Open the folder containing this file in your preferred terminal
   2. Use "streamlit run "./sudan_damage_vis.py"" in your terminal. 
      If streamlit is not in your PATH, you might need to use "py -m streamlit run "./sudan_damage_vis""
@@ -28,12 +33,12 @@ import streamlit as st
 import h5py
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
-import matplotlib.patches as patches
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import numpy as np
 import glob
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+import os
 
 # Config
 APP_TITLE = "Sudan War Damage Visualizer"
@@ -43,11 +48,26 @@ PRESET_COORD_LAYOUTS = {
     "Darfur": {"lat_min": 8, "lat_max": 21, "lon_min": 21, "lon_max": 30},
     "Nile River": {"lat_min": 16, "lat_max": 23, "lon_min": 28, "lon_max": 36}
 }
-PATH_DEFAULT = "C:/"
+
+ROOT = os.path.dirname(__file__)
+ZIP_PATH = os.path.join(ROOT, "data.zip")
+DATA_DIR = os.path.join(ROOT, "data")
+
+#for running the streamlit app with data off github
+@st.cache_data
+def decompress_data(path = ZIP_PATH):
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with zipfile.ZipFile(path, 'r') as z:
+        z.extractall(DATA_DIR)
+    return DATA_DIR
+
+PATH_DEFAULT = decompress_data()
+#or set path manually
+#PATH_DEFAULT = "C:..."
 
 #load all available dates in a specified folder
 def load_available_dates(path = PATH_DEFAULT):
-    files = glob.glob(path + "*.h5")
+    files = glob.glob(os.path.join(path, "*.h5"))
     dates = set()
     for file in files:
         with h5py.File(file, 'r') as f:
@@ -61,7 +81,7 @@ def load_available_dates(path = PATH_DEFAULT):
 #load the data for a specified data, trimming areas outside of the desired coordinates
 def load_data_for_date(date_wanted: np.bytes_, coords = (9, 23, 21, 39), path = PATH_DEFAULT):
     (southBound, northBound, westBound, eastBound) = coords
-    files = glob.glob(path + "*.h5")
+    files = glob.glob(os.path.join(path, "*.h5"))
     data_list = list()
     for f in files:
         with h5py.File(f, 'r') as f:
