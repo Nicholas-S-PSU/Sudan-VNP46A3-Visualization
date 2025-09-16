@@ -79,22 +79,6 @@ def load_available_dates(path = PATH_DEFAULT):
     dates.sort()           
     return dates
 
-# Dark theme adjustments
-plt.style.use("dark_background")  # makes figure background dark
-
-custom_params = {
-    "axes.edgecolor": "white",
-    "axes.labelcolor": "white",
-    "xtick.color": "white",
-    "ytick.color": "white",
-    "text.color": "white",
-    "figure.facecolor": "#0e1117",  # Streamlit dark bg
-    "axes.facecolor": "#0e1117",
-    "savefig.facecolor": "#0e1117",
-}
-
-plt.rcParams.update(custom_params)
-
 
 #load the data for a specified data, trimming areas outside of the desired coordinates
 def load_data_for_date(date_wanted: np.bytes_, coords = (9, 23, 21, 39), path = PATH_DEFAULT):
