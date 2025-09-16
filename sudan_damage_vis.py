@@ -64,7 +64,7 @@ def decompress_data(path = ZIP_PATH):
 
 PATH_DEFAULT = decompress_data()
 #or set path manually
-#PATH_DEFAULT = "C:..."
+#PATH_DEFAULT = "C:your/file/path/to/folder/containing/data"
 
 #load all available dates in a specified folder
 def load_available_dates(path = PATH_DEFAULT):
